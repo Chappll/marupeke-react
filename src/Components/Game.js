@@ -11,11 +11,11 @@ function Game(boardSize) {
     }
 
 
-    const markChange = (position) =>{
-        if(!board[position].blocked)
+    const markChange = (tile) =>{
+        if(!tile.blocked)
         {
             illegalities()
-            switch(board[position].mark) {
+            switch(tile.mark) {
                 case '.':
                     return '-'
                 case '-':
@@ -30,7 +30,7 @@ function Game(boardSize) {
             }
             
         }
-        return board[position].mark
+        return tile.mark
     }
 
     const isLegal = () =>{
