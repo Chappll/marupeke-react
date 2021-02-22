@@ -1,0 +1,32 @@
+.tiles{
+    margin: 0;
+    padding: 0;
+    width: 365px;
+    height: 365px;
+    margin: 0 auto;
+  }
+
+  .tile{
+      margin: 0;
+      padding: 0;    
+      list-style: none;
+      background: #eee;
+      display: inline-block;
+      height: 32.5%;
+      width: 32.5%;
+      cursor: pointer;
+  }
+
+
+  .tileButton
+  {
+    background: #b8d0e7;
+    height: 100%;
+    width: 100%;
+  }
+  .darkBlueTileButton
+  {
+    background: #eee;
+    height: 100%;
+    width: 100%;
+  }
