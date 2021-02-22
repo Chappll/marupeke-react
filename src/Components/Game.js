@@ -6,16 +6,16 @@ function Game(boardSize) {
     boardSize = 3
     const[board, setBoard] = useState([{position: [0,0],mark: '.',blocked: false}, {position: [0,1],mark: 'O',blocked: false}, {position: [0,2],mark: 'O',blocked: false}, {position: [1,0],mark: 'O',blocked: false}, {position: [1,1],mark: 'O',blocked: false}, {position: [1,2],mark: 'O',blocked: false}, {position: [2,0],mark: 'O',blocked: false}, {position: [2,1],mark: 'O',blocked: false}, {position: [2,2],mark: 'O',blocked: false}])
     const changeTile = (position) =>{
-        setBoard(board.map((tile) => tile.position === position ? {...tile, mark: markChange(tile)}: tile))
+        setBoard(board[position].mark = markChange(position))
         
     }
 
 
-    const markChange = (tile) =>{
-        if(!tile.blocked)
+    const markChange = (position) =>{
+        if(!board[position].blocked)
         {
-            illegalities()
-            switch(tile.mark) {
+            //illegalities()
+            switch(board[position].mark) {
                 case '.':
                     return '-'
                 case '-':
@@ -30,7 +30,7 @@ function Game(boardSize) {
             }
             
         }
-        return tile.mark
+        return board[position].mark
     }
 
     const isLegal = () =>{
