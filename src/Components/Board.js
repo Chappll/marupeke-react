@@ -6,7 +6,7 @@ const Board = ({board, changeTile}) => {
     return (
         <div className='tiles'>
             {board.map((tile) => (     
-            <Tile tile={tile} changeTile={changeTile} position={board.indexOf(tile)}/>
+            <Tile tile={tile} changeTile={changeTile}/>
             ))}
         </div>
     )
