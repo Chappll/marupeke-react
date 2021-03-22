@@ -7,7 +7,8 @@ const Tile = ({tile, changeTile}) => {
    // {((tile.position[0]+tile.position[1])%2==0)?'tileButton':'darkBlueTileButton'}
     return (
         <div className='tile'>
-            <button className={tile.blocked?'tileButton':'darkBlueTileButton'} onClick={() => changeTile(tile.position)}>{tile.mark}</button>
+            <button className={tile.blocked?'darkBlueTileButton' + ((tile.mark=='X'||tile.mark=='O')?tile.mark:''):'tileButton' +((tile.mark=='X'||tile.mark=='O')?tile.mark:'')} 
+            onClick={() => changeTile(tile.position)}></button>
             
         </div>
     )

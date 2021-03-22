@@ -5,6 +5,7 @@ import Alert from '@material-ui/lab/Alert'
 
 function Game(boardSize) {
     boardSize = 3
+    const[moves, setMoves] = useState(0)
     const[board, setBoard] = useState([{position: [0,0],mark: '.',blocked: false}, {position: [1,0],mark: 'O',blocked: false}, {position: [2,0],mark: 'O',blocked: false}, {position: [0,1],mark: 'O',blocked: false}, {position: [1,1],mark: 'O',blocked: false}, {position: [2,1],mark: 'O',blocked: false}, {position: [0,2],mark: 'O',blocked: false}, {position: [1,2],mark: 'O',blocked: false}, {position: [2,2],mark: 'O',blocked: false}])
     const[mistakes, setMistakes] = useState()
     const[complete, setComplete] = useState(false)
@@ -16,13 +17,13 @@ function Game(boardSize) {
         {                     
             switch(tile.mark) {
                 case '.':
-                    return '-'
+                    return 'O'
                 case '-':
                     return 'O'
                 case 'O':
                     return 'X'
                 case 'X':
-                    return '.'
+                    return '-'
                 default:
                     return'-'
                 // code block               
@@ -84,7 +85,10 @@ function Game(boardSize) {
                 setComplete(true) 
                 setBoard(board.map((tile) => true ? {...tile, blocked: true}: tile)) 
             }
-                     
+            else{
+                setComplete(false)
+            }
+            setMoves(moves + 1)        
             //console.log(illegalities(board))
         }
     
@@ -134,6 +138,7 @@ function Game(boardSize) {
         }
 
         const setNewRandomBoard = (boardSize, numBlocked, numX, numO) =>{
+            setMoves(0)
             setBoard(createBoard(boardSize, numBlocked, numX, numO))
         }
 
@@ -159,12 +164,12 @@ function Game(boardSize) {
         }
 
     return (
-        <div>
+        <div style={{position: 'absolute', left: '50%', top: '50%',transform: 'translate(-50%, -50%)'}}>
             <Board board={board} changeTile={changeTile} />
-            <button onClick={() => setNewRandomBoard(3,1,1,1)}>{"Create New Board"}</button>
+            <button style={{margin:"5px"}} onClick={() => setNewRandomBoard(3,1,1,1)}>{"Create New Board"}</button>
             <form>{mistakes}</form>
             {complete ? <Alert severity="success" color="info">
-            This is a success alert — check it out!
+            The board is complete, Congratulations!
             </Alert>: null}
             
         </div>
